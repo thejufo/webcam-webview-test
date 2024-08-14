@@ -1,5 +1,7 @@
 "use client";
 
+
+
 import { ArrowLeftRight, Check, GalleryVerticalEnd, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CameraView } from "./camera-view";
@@ -23,6 +25,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import save from "@/lib/save";
 
 interface CameraProps {
   onClosed: () => void;
@@ -34,12 +37,13 @@ const Camera: FC<CameraProps> = ({ onClosed, onCapturedImages }) => {
   const { images, addImage, numberOfCameras, resetImages, stopStream } =
     useCamera();
 
-  const handleCapture = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleCapture =  async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (camera.current) {
       const imageData = camera.current.takePhoto();
       if (imageData) {
         addImage(imageData);
+        save(imageData)
       }
     }
   };

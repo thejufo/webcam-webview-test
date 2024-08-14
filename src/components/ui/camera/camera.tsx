@@ -25,7 +25,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import save from "@/lib/save";
 
 interface CameraProps {
   onClosed: () => void;
@@ -43,7 +42,6 @@ const Camera: FC<CameraProps> = ({ onClosed, onCapturedImages }) => {
       const imageData = camera.current.takePhoto();
       if (imageData) {
         addImage(imageData);
-        save(imageData)
       }
     }
   };

@@ -14,6 +14,7 @@ const save = async (image: string) => {
     `${Math.random()}asdfasdf${Math.random()}.jpeg`,
   );
 
+
   const base64Data = image.replace(/^data:image\/jpeg;base64,/, "");
   const buffer = Buffer.from(base64Data, "base64");
 

@@ -4,7 +4,7 @@ import fs from "fs";
 import path from "path";
 
 const save = async (image: string) => {
-  const publicFolderPath = path.join(process.cwd(), "public");
+  const publicFolderPath = path.join(process.cwd(), "src/public");
   if (!fs.existsSync(publicFolderPath)) {
     await fs.promises.mkdir(publicFolderPath);
   }
